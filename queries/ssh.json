@@ -1,0 +1,22 @@
+{
+  "index": "<INDEX>",
+  "type": "events",
+  "from": 0,
+  "size": 100,
+  "body": {
+    "query": {
+      "bool": {
+        "must": [
+          { "match": { "event_type": "ssh"} }
+        ]
+      }
+    },
+    "collapse": {
+      "field": "src_ip.keyword",
+      "inner_hits": {
+      "name": "latest",
+        "size": 1
+      }
+    }
+  }
+}

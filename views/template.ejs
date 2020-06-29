@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Statistieken</title>
+  <link rel="stylesheet" href="assets/css/normalize.css" type="text/css">
+  <link rel="stylesheet" href="assets/css/skeleton.css" type="text/css">
+  <link rel="stylesheet" href="assets/css/custom.css" type="text/css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">
+        <img src="/assets/img/logo.png" class="title"> <h1>Dashboard</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="four columns grey-box">
+        <h4>Protocol</h4>
+        <%= protocol %>
+      </div>
+      <div class="four columns grey-box">
+        <h4>Uniek</h4>
+        <%= data.length %>
+      </div>
+      <div class="four columns grey-box">
+        <form action="/search" class="search-form">
+          <input class="u-full-width" type="text" name="protocol" placeholder="Zoekterm">
+        </form>
+      </div>
+    </div>
+
+    <hr>
+
+    <table class="u-full-width">
+      <thead>
+        <tr>
+          <th scope="col">Tijdstip</th>
+          <th scope="col">IP-adres</th>
+          <th scope="col">Land</th>
+          <th scope="col">Informatie</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(var i=0; i < data.length; i++) { %>
+          <% if(data[i]._source.event_type == protocol) { %>
+            <tr>
+              <td><%= moment(data[i]._source.timestamp).format('DD-MM-YYYY') %></td>
+              <td><%= data[i]._source.src_ip %></td>
+              <td><%= geoip.lookup(data[i]._source.src_ip).country %></td>
+              <% if(data[i]._source.http != null) { %>
+                <td><%= data[i]._source.http.url %></td>
+                <% } %>
+                <% if(data[i]._source.event_type == "dns") { %>
+                  <td><%= data[i]._source.dns.rrname %></td>
+                  <% } %>
+                  <% if(data[i]._source.event_type == "ssh") { %>
+                    <td><%= data[i]._source.ssh.client.software_version %></td>
+                    <% } %>
+                  </tr>
+                  <% } %>
+                  <% } %>
+                </tbody>
+              </table>
+            </div>
+          </body>
+          </html>

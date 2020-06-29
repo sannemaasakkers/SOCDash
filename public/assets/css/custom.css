@@ -1,0 +1,40 @@
+body {
+  color: #ffffff;
+  background-color: #2f3640;
+}
+
+.grey-box {
+  background-color: #353b48;
+  padding: 10px;
+}
+
+.logo {
+  padding: 0px 0px 40px 0px;
+}
+
+.right {
+  text-align: right;
+}
+
+.title {
+  max-width: 70px;
+  float: left;
+  padding-right: 20px;
+}
+
+.container {
+  padding: 40px;
+}
+
+.search-form {
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  margin-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+input {
+  margin-bottom: 0;
+  color: #000000;
+}
