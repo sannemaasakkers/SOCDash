@@ -24,7 +24,7 @@ app.use(express.static(path.join( __dirname, 'public')));
 
 
 app.get('/search', function (req, res){
-  client.search(JSON.parse(fs.readFileSync('queries/' + req.query['protocol'] + '.json')), function (error, response,status) {
+  client.search(JSON.parse(fs.readFileSync('queries/' + path.normalize(req.query['protocol']).replace(/^(\.\.(\/|\\|$))+/, '') + '.json')), function (error, response,status) {
     if (error){
       console.log("Error: " + error)
     }
