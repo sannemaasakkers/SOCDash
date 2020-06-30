@@ -4,6 +4,9 @@
   "from": 0,
   "size": 100,
   "body": {
+    "sort" : [
+        { "timestamp": "desc"}
+    ],
     "query": {
       "bool": {
         "must": [

@@ -52,7 +52,7 @@
               <td><%= data[i]._source.src_ip %></td>
               <td><%= geoip.lookup(data[i]._source.src_ip).country %></td>
               <% if(data[i]._source.http != null) { %>
-                <td><%= data[i]._source.http.url %></td>
+                <td><%= data[i]._source.http.http_method %> <%= data[i]._source.http.url %></td>
                 <% } %>
                 <% if(data[i]._source.event_type == "dns") { %>
                   <td><%= data[i]._source.dns.rrname %></td>
